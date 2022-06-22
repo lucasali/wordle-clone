@@ -43,8 +43,8 @@ import KeyInput from './KeyInput.vue'
 
 const emit = defineEmits(['keyInput'])
 
-const emitClick = (event: Event) => {
-    emit('keyInput', event)
+const emitClick = (key: string) => {
+    emit('keyInput', key)
 }
 
 const firstKeyboardRow = ref<KeyboardKey[]>([

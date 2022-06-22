@@ -1,7 +1,7 @@
 <template>
     <button
         class="flex h-14 items-center justify-center rounded-[0.25rem] bg-tone-2"
-        @click="$emit('click', $event)"
+        @click="$emit('click', key)"
         :class="[
             keyboardKey === 'delete' || keyboardKey === 'enter'
                 ? 'w-16'
@@ -21,12 +21,14 @@
             ></path>
         </svg>
         <span v-else class="font-bold text-white">
-            {{ keyboardKey.toUpperCase() }}
+            {{ key }}
         </span>
     </button>
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
+
 export type KeyboardKey =
     | 'a'
     | 'b'
@@ -61,7 +63,9 @@ export interface KeyInputProps {
     keyboardKey: KeyboardKey
 }
 
-defineProps<KeyInputProps>()
+const props = defineProps<KeyInputProps>()
+
+const key = computed(() => props.keyboardKey.toUpperCase())
 
 defineEmits(['click'])
 </script>

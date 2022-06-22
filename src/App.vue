@@ -28,7 +28,7 @@
                     </template>
                 </div>
             </div>
-            <GameKeyboard></GameKeyboard>
+            <GameKeyboard @key-input="test"></GameKeyboard>
         </main>
     </div>
 </template>
@@ -62,6 +62,12 @@ const onLetterInput = (row: number, column: number) => {
 // onStartTyping(() => {
 //     console.log(letterBoxRefs.value[]?.inputRef?.focus())
 // })
+
+const test = (key: string) => {
+    if (key === 'DELETE') {
+        typedLetters.value.pop()
+    } else typedLetters.value.push(key)
+}
 
 whenever(keys.Enter, () => {
     console.log('Enter pressed')
