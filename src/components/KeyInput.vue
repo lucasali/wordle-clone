@@ -1,7 +1,7 @@
 <template>
     <button
         class="flex h-14 items-center justify-center rounded-[0.25rem] bg-tone-2"
-        @click="$emit('click')"
+        @click="$emit('click', $event)"
         :class="[
             keyboardKey === 'delete' || keyboardKey === 'enter'
                 ? 'w-16'

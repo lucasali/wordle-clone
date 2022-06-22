@@ -5,7 +5,10 @@
                 v-for="keyboardKey in firstKeyboardRow"
                 :key="keyboardKey"
             >
-                <KeyInput :keyboard-key="keyboardKey"></KeyInput>
+                <KeyInput
+                    :keyboard-key="keyboardKey"
+                    @click="emitClick"
+                ></KeyInput>
             </template>
         </div>
         <div class="flex justify-center space-x-1.5">
@@ -13,7 +16,10 @@
                 v-for="keyboardKey in secondKeyboardRow"
                 :key="keyboardKey"
             >
-                <KeyInput :keyboard-key="keyboardKey"></KeyInput>
+                <KeyInput
+                    :keyboard-key="keyboardKey"
+                    @click="emitClick"
+                ></KeyInput>
             </template>
         </div>
         <div class="flex justify-center space-x-1.5">
@@ -21,7 +27,10 @@
                 v-for="keyboardKey in thirdKeyboardRow"
                 :key="keyboardKey"
             >
-                <KeyInput :keyboard-key="keyboardKey"></KeyInput>
+                <KeyInput
+                    :keyboard-key="keyboardKey"
+                    @click="emitClick"
+                ></KeyInput>
             </template>
         </div>
     </div>
@@ -31,6 +40,12 @@
 import { ref } from 'vue'
 import type { KeyboardKey } from './KeyInput.vue'
 import KeyInput from './KeyInput.vue'
+
+const emit = defineEmits(['keyInput'])
+
+const emitClick = (event: Event) => {
+    emit('keyInput', event)
+}
 
 const firstKeyboardRow = ref<KeyboardKey[]>([
     'q',
